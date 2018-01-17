@@ -52,14 +52,42 @@ Unit.prototype.infoHP = function(){
   }
 }
 
-Unit.prototype.drawUnit = function(parentElemId, enemy){
-  let parentElem = document.getElementById(parentElemId);
+Unit.prototype.drawMyUnit = function(parentElemId){
+  let parentElem = document.getElementsByClassName(parentElemId)[0];
+
   let divUnit = document.createElement("div");
-  if(enemy){
-    divUnit.className = "enemyUnit";
-  }else{
-    divUnit.className = "myUnit";
-  }  
-  divUnit.nodeValue = this.name;
+  divUnit.className = "myUnit";  
   parentElem.appendChild(divUnit);
+  
+  parentElem = divUnit;
+
+  let divUnitImg = document.createElement("div");
+  divUnitImg.className = "divUnitImg";
+  parentElem.appendChild(divUnitImg);
+
+  let divUnitInfoWrapper = document.createElement("div");
+  divUnitInfoWrapper.className = "divUnitInfoWrapper";
+  parentElem.appendChild(divUnitInfoWrapper);
+
+  parentElem = divUnitImg;
+  
+  let imgUnit = document.createElement("img");
+  imgUnit.className = "imgUnit";
+  imgUnit.src = "img/"+this.name+".jpg";
+  parentElem.appendChild(imgUnit);
+
+  parentElem = divUnitInfoWrapper;
+
+  let divUnitInfo = document.createElement("div");
+  divUnitInfo.className = "divUnitInfo";
+  divUnitInfo.innerHTML = this.name;
+  parentElem.appendChild(divUnitInfo);
+  divUnitInfo = document.createElement("div");
+  divUnitInfo.className = "divUnitInfo";
+  divUnitInfo.innerHTML = "ST: "+this.stamina + "/" + this.maxStamina;
+  parentElem.appendChild(divUnitInfo);
+  divUnitInfo = document.createElement("div");
+  divUnitInfo.className = "divUnitInfo";
+  divUnitInfo.innerHTML = "HP: "+this.healPoints + "/" + this.maxHealPoints;
+  parentElem.appendChild(divUnitInfo);
 }

@@ -60,8 +60,8 @@ Squad.prototype.getRandomUnit = function () {
     }
 }
 
-Squad.prototype.drawSquad = function(parentElemId, enemy){
+Squad.prototype.drawSquad = function(parentElemId){
     this.squad.forEach(function (unit) {
-        unit.drawUnit(parentElemId, enemy);
+        unit.drawMyUnit(parentElemId);
     });
 }
